@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<cabeçalho>
+    <!-- Definições básicas do documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="largura=largura-do-dispositivo, escala-inicial=1.0">
+    <title>Página de Previsão do Tempo. Equipe: Julia, Emilly, Guilherme, Pedro Augusto</title>
+    <estilo>
+        /* Estilos gerais para o corpo da página */
+        corpo {
+            família de fontes: Arial, sem serifa; /* Fonte usada na página */
+            margem: 0; /* Remover as margens padrão do navegador */
+            preenchimento: 0; /* Remove o preenchimento padrão do navegador */
+            cor: #333; /* Cor do texto */
+            background: url('https://files.agro20.com.br/uploads/2020/03/comidabrasileira3-1024x576.jpg') centro sem repetição centro fixo; /* Imagem de fundo */
+            tamanho do fundo: capa; /* Faz a imagem cobrir toda a área */
+            alinhamento de texto: centro; /* Centraliza o texto */
+            preenchimento: 50px; /* Adiciona espaço interno ao redor da página */
+        }
+        /* Estilo do contêiner principal */
+        #recipiente {
+            fundo: rgba (255, 255, 255, 0,8); /* Fundo branco com opacidade */
+            preenchimento: 20px; /* Espaçamento interno */
+            raio da borda: 10px; /* Bordas circundantes */
+            largura máxima: 600px; /* Largura máxima */
+            margem: automático; /* Centraliza horizontalmente */
+        }
+        /* Estilo do cabeçalho */
+        h1 {
+            cor: #DA70D6; /* Cor verde escura */
+        }
+        /* Estilo dos botões */
+        .botão {
+            cor de fundo: #DDA0DD; /* Cor de fundo verde */
+            fronteira: nenhuma; /* Remove bordas padrão */
+            cor: branco; /* Cor do texto */
+            preenchimento: 15px 32px; /* Espaçamento interno */
+            alinhamento de texto: centro; /* Alinha o texto no centro */
+            decoração de texto: nenhuma; /* Remove o sublinhado do texto */
+            display: bloco embutido; /* Exibe como bloco inline */
+            tamanho da fonte: 16px; /* Tamanho da fonte */
+            margem: 10px; /* Margem ao redor do botão */
+            cursor: ponteiro; /* Muda o cursor ao passar sobre o botão */
+            raio da borda: 5px; /* Bordas circundantes */
+        }
+        /* Estilo do botão ao passar o mouse */
+        .botão:passar o mouse {
+            cor de fundo: #DA70D6; /* Cor de fundo verde escuro */
+        }
+        /* Estilo da área de previsão do tempo */
+        #clima {
+            margem superior: 20px; /* Espaço acima */
+        }
+        /* Estilo do iframe do YouTube */
+        iframe {
+            margem superior: 20px; /* Espaço acima */
+            largura: 100%; /* Largura total do contêiner */
+            largura máxima: 560px; /* Largura máxima */
+            altura: 315px; /* Altura do iframe */
+            fronteira: nenhuma; /* Remove bordas padrão */
+        }
+        /* Estilo do contêiner da mensagem acima do vídeo */
+        .container-de-mensagem {
+            fundo: rgba (255, 255, 255, 0,8); /* Fundo branco com opacidade */
+            preenchimento: 10px; /* Espaçamento interno */
+            raio da borda: 5px; /* Bordas circundantes */
+            margem: 20px automático; /* Margem ao redor e centralizada */
+            largura máxima: 600px; /* Largura máxima */
+        }
+        /* Estilo do conteúdo adicional */
+        .contente {
+            fundo: rgba (255, 255, 255, 0,9); /* Fundo branco com opacidade */
+            preenchimento: 20px; /* Espaçamento interno */
+            raio da borda: 10px; /* Bordas circundantes */
+            margem: 20px automático; /* Margem ao redor e centralizada */
+            largura máxima: 800px; /* Largura máxima */
+        }
+        /* Estilo do botão para voltar ao topo */
+        .voltar ao topo {
+            display: bloco embutido; /* Exibe como bloco inline */
+            preenchimento: 10px 20px; /* Espaçamento interno */
+            margem: 20px; /* Margem ao redor */
+            cor de fundo: #4CAF50; /* Cor de fundo verde */
+            cor: branco; /* Cor do texto */
+            decoração de texto: nenhuma; /* Remove o sublinhado do texto */
+            raio da borda: 5px; /* Bordas circundantes */
+        }
+        /* Estilo do botão ao passar o mouse */
+        .voltar-ao-topo:passar o mouse {
+            cor de fundo: #DA70D6; /* Cor de fundo verde escuro */
+        }
+        /* Estilo do rodapé */
+        rodapé {
+            margem superior: 50px; /* Espaço acima */
+            fundo: rgba (255, 255, 255, 0,8); /* Fundo branco com opacidade */
+            preenchimento: 10px; /* Espaçamento interno */
+            raio da borda: 5px; /* Bordas circundantes */
+            largura máxima: 600px; /* Largura máxima */
+            margem: 20px automático 0; /* Margem ao redor e centralizada */
+        }
+    </estilo>
+</cabeçalho>
+<corpo>
+    <!-- Recipiente principal -->
+    <div id="recipiente">
+        <h1>Data e Hora Atual</h1>
+        <p id="datahora"></p>
+        <button class="button" onclick="showWeather()">Mostrar Previsão do Tempo</button>
+        <div id="clima"></div>
+        <p>Digite o nome da cidade para ver a previsão:</p>
+        <input type="texto" id="cidade" placeholder="Cidade" oninput="autocomplete()">
+        <button class="button" onclick="searchWeather()">Buscar</button>
+        <p id="nome-da-cidade"></p>
+    </div>
+
+    <!-- Mensagem acima do vídeo -->
+    <div class="container-de-mensagem">
+        <h2>Hora do café, veja a previsão do tempo escutando Vivaldi Springs</h2>
+    </div>
+
+    <!-- Vídeo incorporado do YouTube -->
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/l-dYNttdgl0?si=iHlJ4qbyBo55RV_J" title="Player de vídeo do YouTube" frameborder="0" allow="acelerômetro; reprodução automática; gravação na área de transferência; mídia criptografada; giroscópio; imagem na imagem; compartilhamento na web" referrerpolicy="origem-estrita-quando-origem-cruzada" allowfullscreen></iframe>
+    <!-- Conteúdo sobre a transição do campo para a cidade -->
+    <div class="conteúdo">
+        <h2>Malefícios de não comer saudavelmente</h2>
+        <p>
+           Não comer saudavelmente pode ter uma série de efeitos negativos para a saúde, afetando praticamente todos os aspectos do corpo e da mente. Aqui alguns dos principais malefícios estão:
+       </p>
+        <p>
+           Aumento do Risco de Doenças Crônicas: Dietas saudáveis ​​um pouco, ricas em açúcares, gorduras saturadas e sonoras, estão associadas a um maior risco de doenças cardíacas, hipertensão, diabetes tipo 2 e alguns tipos de câncer.
+
+           Problemas de Peso: O consumo excessivo de calorias e alimentos processados ​​pode levar ao excesso de peso e obesidade, que são fatores de risco para diversas condições de saúde.
+
+           Dificuldades digestivas: Uma dieta pobre em fibras pode causar constipação, problemas digestivos e aumentar o risco de doenças intestinais.
+
+           Desnutrição: A falta de uma variedade de nutrientes essenciais pode levar a deficiências nutricionais, afetando a função imunológica, a saúde óssea e a integridade da pele.
+
+           Impacto na Saúde Mental: Há evidências que sugerem que uma dieta desequilibrada pode estar relacionada a problemas de saúde mental, como depressão e ansiedade.
+        </p>
+        <p>
+           Comprometimento de Energia e de Concentração: Dietas pobres podem afetar os níveis de energia e a capacidade de concentração, tornando mais difícil realizar atividades diárias e se manter produtivo.
+
+           Problemas cardiovasculares: O consumo excessivo de alimentos ricos em gordura saturada e colesterol pode levar a problemas cardíacos e aterosclerose.
+
+           Impacto no Sistema Imunológico: Uma alimentação consumida pode enfraquecer o sistema imunológico, tornando o corpo mais suscetível a infecções e doenças.
+
+           Problemas de Pele e Cabelo: A falta de vitaminas e minerais essenciais pode afetar a saúde da pele e do cabelo, causando problemas como acne, ressecamento e queda de cabelo.
+
+           Comprometimento da Saúde Óssea: A falta de cálcio e vitamina D pode enfraquecer os ossos, aumentando o risco de osteoporose e fraturas.
+        </p>
+        <p>
+           Manter uma dieta equilibrada e nutritiva é fundamental para o bem-estar geral e para a prevenção de uma série de problemas de saúde. Se você está preocupado com seus hábitos alimentares, pode ser útil consultar um nutricionista ou profissional de saúde para orientação personalizada.
+        </p>
+        <a href="#" class="back-to-top" onclick="scrollToTop()">Voltar ao topo</a>
+    </div>
+
+    <!-- Rodapé da página -->
+    <rodapé>
+        <p>Organização Colégio Otalipio 2° Técnico 2024</p>
+    </rodapé>
+
+    <!-- Scripts JavaScript -->
+    <roteiro>
+        const API_KEY = '588370709cbcad03b72ac80564b2bbd1'; // Chave da API do OpenWeatherMap
+
+        // Atualiza os dados e a hora no formato desejado
+        função updateDateTime() {
+            const agora = nova data();
+            const options = { ano: 'numérico', mês: 'longo', dia: 'numérico', hora: '2 dígitos', minuto: '2 dígitos', segundo: '2 dígitos', dia da semana: 'longo' };
+            document.getElementById('datetime').innerText = now.toLocaleDateString('pt-BR', opções);
+        }
+
+        // Exibe a previsão do tempo para uma cidade fixa
+        função showWeather() {
+            const cidade = 'São Paulo'; // Cidade fixa para exibir a previsão
+            buscar(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&lang=pt_br&units=metric`)
+                .então(resposta => resposta.json())
+                .então(dados => {
+                    se (dados.cod === 200) {
+                        document.getElementById('clima').innerHTML = `
+                            <h2>Previsão do Tempo em ${city}</h2>
+                            <p>Temperatura: ${data.main.temp}°C</p>
+                            <p>Condição: ${data.weather[0].description}</p>
+                            <p>Umidade: ${data.main.humidity}%</p>
+                            <p>Vento: ${data.wind.speed} m/s</p>
+                        `;
+                    } outro {
+                        document.getElementById('clima').innerHTML = `<p>${data.message || 'Cidade não encontrada.'}</p>`;
+                    }
+                })
+                .catch(erro => {
+                    document.getElementById('weather').innerHTML = `<p>Erro ao buscar previsão do tempo: ${error.message}</p>`;
+                });
+        }
+
+        // Busca e exibe a previsão do tempo para a cidade inserida pelo usuário
+        função searchWeather() {
+            const cidade = document.getElementById('cidade').value.trim();
+            se (!cidade) {
+                alert('Por favor, insira o nome da cidade.');
+                retornar;
+            }
+            document.getElementById('city-name').innerText = `Previsão do Tempo para ${city}`;
+            buscar(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&lang=pt_br&units=metric`)
+                .então(resposta => resposta.json())
+                .então(dados => {
+                    se (dados.cod === 200) {
+                        document.getElementById('clima').innerHTML = `
+                            <h2>Previsão do Tempo em ${city}</h2>
+                            <p>Temperatura: ${data.main.temp}°C</p>
+                            <p>Condição: ${data.weather[0].description}</p>
+                            <p>Umidade: ${data.main.humidity}%</p>
+                            <p>Vento: ${data.wind.speed} m/s</p>
+                        `;
+                    } outro {
+                        document.getElementById('clima').innerHTML = `<p>${data.message || 'Cidade não encontrada.'}</p>`;
+                    }
+                })
+                .catch(erro => {
+                    document.getElementById('weather').innerHTML = `<p>Erro ao buscar previsão do tempo: ${error.message}</p>`;
+                });
+        }
+
+        // Função para exibir sugestões de cidades enquanto o usuário digital
+        função autocomplete() {
+            const input = document.getElementById('cidade');
+            const valor = input.value.trim();
+            se (!valor) {
+                fecharTodasAsListas();
+                retornar;
+            }
+
+            buscar(`https://api.openweathermap.org/data/2.5/find?q=${value}&appid=${API_KEY}&lang=pt_br`)
+                .então(resposta => resposta.json())
+                .então(dados => {
+                    fecharTodasAsListas();
+                    se (!dados.lista.comprimento) {
+                        retornar;
+                    }
+                    const lista = document.createElement('DIV');
+                    lista.setAttribute('id', 'lista de preenchimento automático');
+                    lista.setAttribute('classe', 'itens-de-completamento-automático');
+                    entrada.parentNode.appendChild(lista);
+
+                    dados.lista.paraCada(item => {
+                        const div = document.createElement('DIV');
+                        div.innerHTML = `${item.name}, ${item.sys.country}`;
+                        div.addEventListener('clique', () => {
+                            entrada.valor = `${item.nome}, ${item.sys.país}`;
+                            fecharTodasAsListas();
+                        });
+                        lista.appendChild(div);
+                    });
+                })
+                .catch(error => console.error('Erro ao buscar sugestões de cidades:', error));
+        }
+
+        // Fecha todas as listas de sugestões
+        função closeAllLists() {
+            const itens = document.getElementsByClassName('autocomplete-items');
+            enquanto (itens.length) {
+                itens[0].parentNode.removeChild(itens[0]);
+            }
+        }
+
+        // Fecha as listas de sugestões ao clicar fora do campo de entrada
+        document.addEventListener('clique', (e) => {
+            se (e.target !== document.getElementById('cidade')) {
+                fecharTodasAsListas();
+            }
+        });
+
+        // Função para rolar a página até o topo
+        função scrollToTop() {
+            window.scrollTo({ topo: 0, comportamento: 'suave' });
+        }
+
+        // Atualiza dados e hora a cada segundo
+        setInterval(atualizaçãoDataHora, 1000);
+        // Atualiza os dados e a hora imediatamente ao carregar a página
+        atualizarDataHora();
+    </script>
+</corpo>
+</html>
